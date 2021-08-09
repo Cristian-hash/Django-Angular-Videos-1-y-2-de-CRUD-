@@ -7,37 +7,37 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  baseurl = "http://localhost:8000";   /* la direccion base de django */
+  baseurl = "http://localhost:8000"; 
 
-  /* aplicacion jason */
+  
   httpHeaders = new HttpHeaders({ 'Content-type': 'application/json'});
 
-  constructor(private http: HttpClient) { } /* habilitamos el modelo http en el lado del cliente */
+  constructor(private http: HttpClient) { } 
 
-  getAllMovies() : Observable<any>{   /* Metodo para obtener las peliculas  */
+  getAllMovies() : Observable<any>{  
     return this.http.get(this.baseurl + '/movies/', 
     {headers: this.httpHeaders});
   }
 
-  getOneMovie(id:any) : Observable<any>{   /* Metodo para obtener las peliculas  */
-    return this.http.get(this.baseurl + '/movies/' + id + '/',  //pasamos la id para ver la info de la pelicula
+  getOneMovie(id:any) : Observable<any>{   
+    return this.http.get(this.baseurl + '/movies/' + id + '/', 
     {headers: this.httpHeaders}); 
   }
 
-  updateMovie(movie:any) : Observable<any>{   /* Metodo para actualizar las peliculas  */
+  updateMovie(movie:any) : Observable<any>{  
     const body = {title: movie.title, desc: movie.desc, year: movie.year};
-    return this.http.put(this.baseurl + '/movies/' + movie.id + '/', body, //hacemos put para actualizar
+    return this.http.put(this.baseurl + '/movies/' + movie.id + '/', body, 
     {headers: this.httpHeaders}); 
   }
 
-  createMovie(movie:any) : Observable<any>{   /* Metodo para crear una pelicula  */
+  createMovie(movie:any) : Observable<any>{   
     const body = {title: movie.title, desc: movie.desc, year: movie.year};
-    return this.http.post(this.baseurl + '/movies/', body, //post para enviar los datos
+    return this.http.post(this.baseurl + '/movies/', body, 
     {headers: this.httpHeaders}); 
   }
 
-  deleteMovie(id:any) : Observable<any>{   /* Metodo para eliminar una pelicula  */
-    return this.http.delete(this.baseurl + '/movies/' + id + '/', //delete para eliminar
+  deleteMovie(id:any) : Observable<any>{   
+    return this.http.delete(this.baseurl + '/movies/' + id + '/',
     {headers: this.httpHeaders}); 
   }
   

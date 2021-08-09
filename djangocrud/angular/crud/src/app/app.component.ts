@@ -17,23 +17,23 @@ export class AppComponent {
   }
 
   getMovies = () => {
-    this.api.getAllMovies().subscribe( //obtenemos los datos y los asignamos a la variable movies
+    this.api.getAllMovies().subscribe( 
       data => {
         this.movies = data;
       },
       error => {
-        console.log(error); //para controlar el error
+        console.log(error); 
       }
     );
   }
 
   movieClicked = (movie:any) => {
-    this.api.getOneMovie(movie.id).subscribe( //obtenemos los datos de una movie para mostrarlos
+    this.api.getOneMovie(movie.id).subscribe( 
       data => {
         this.selectedMovie = data;
       },
       error => {
-        console.log(error); //para controlar el error
+        console.log(error); 
       }
     );
   }
